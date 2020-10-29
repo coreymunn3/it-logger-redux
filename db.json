@@ -1,0 +1,42 @@
+{
+  "logs": [
+    {
+      "id": 1,
+      "message": "Changed hard drive on work station 043",
+      "attention": false,
+      "date": "03-02-2020",
+      "tech": "Sam Smith"
+    },
+    {
+      "id": 2,
+      "message": "Workstation 7 is broken",
+      "attention": true,
+      "date": "06-21-2020",
+      "tech": "Sam Smith"
+    },
+    {
+      "id": 3,
+      "message": "Broken Chair in CEO's office",
+      "attention": false,
+      "date": "04-08-2020",
+      "tech": "Sam Smith"
+    }
+  ],
+  "techs": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "lastName": "Wilson"
+    },
+    {
+      "id": 2,
+      "firstName": "Sam",
+      "lastName": "Smith"
+    },
+    {
+      "id": 3,
+      "firstName": "Jimmy",
+      "lastName": "Webb"
+    }
+  ]
+}
