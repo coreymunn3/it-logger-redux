@@ -3,7 +3,6 @@
 @import '../node_modules/bulma/sass/utilities/functions.sass';
 
 // 2. Set your own initial variables
-// Update blue
 $purple: #2f3061;
 $yellow: #f9dc5c;
 $red: #f25f5c;
@@ -26,4 +25,11 @@ $family-primary: $family-sans-serif;
 .navbar-brand {
   font-family: 'Space Mono', monospace;
   font-weight: bold;
+}
+
+.collectionTitle {
+  background: $white-ter;
+  text-align: center;
+  padding: 0.3rem;
+  border-radius: 4px;
 }
