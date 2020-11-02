@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+// import classnames from 'classnames';
+// components
+import SearchBar from './components/layout/SearchBar';
+import Logs from './components/logs/Logs';
+// import styles
+import './App.scss';
 
 const App = () => {
   return (
-    <div>
-      <h1>App</h1>
-    </div>
+    <Fragment>
+      <SearchBar />
+      <div className='section'>
+        <Logs />
+      </div>
+    </Fragment>
   );
 };
 
