@@ -8,6 +8,7 @@ $yellow: #f9dc5c;
 $red: #f25f5c;
 $green: #34d1bf;
 $violet: #8075ff;
+$blue: #0496ff;
 $family-sans-serif: 'Open Sans', sans-serif;
 
 // 3. Set the derived variables
@@ -15,9 +16,10 @@ $primary: $violet;
 $success: $green;
 $warning: $yellow;
 $danger: $red;
-$link: $violet;
 $dark: $purple;
+$link: $dark;
 $family-primary: $family-sans-serif;
+$link-active: $blue;
 
 // 6. Import the rest of Bulma
 @import '../node_modules/bulma/bulma.sass';
@@ -25,11 +27,4 @@ $family-primary: $family-sans-serif;
 .navbar-brand {
   font-family: 'Space Mono', monospace;
   font-weight: bold;
-}
-
-.collectionTitle {
-  background: $white-ter;
-  text-align: center;
-  padding: 0.3rem;
-  border-radius: 4px;
 }

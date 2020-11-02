@@ -1,7 +1,7 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
-// import styles from './Logs.module.scss';
+// components
+import LogItem from './LogItem';
 
 const Logs = () => {
   const [logs, setLogs] = useState([]);
@@ -23,10 +23,18 @@ const Logs = () => {
     return <h4>Loading...</h4>;
   }
   return (
-    <Fragment>
-      <h3 className='title has-text-primary collectionTitle'>System Logs</h3>
-      <ul className='collection'></ul>
-    </Fragment>
+    <article className='panel is-primary'>
+      <p className='panel-heading'>System Logs</p>
+      <p className='panel-tabs'>
+        <a className='is-active' href='/#'>
+          All
+        </a>
+        <a href='/#'>High Priority</a>
+      </p>
+      {logs.map((log) => (
+        <LogItem key={log.id} log={log} />
+      ))}
+    </article>
   );
 };
 
