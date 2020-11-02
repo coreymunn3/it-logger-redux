@@ -8,7 +8,9 @@ const LogItem = ({ log: { date, message, attention, tech } }) => {
       className={`panel-block ${attention ? 'has-text-danger' : ''}`}
     >
       <span className='panel-icon'>
-        <i class={`fas fa-clipboard ${attention ? 'has-text-danger' : ''}`} />
+        <i
+          className={`fas fa-clipboard ${attention ? 'has-text-danger' : ''}`}
+        ></i>
       </span>
       {`${date} - ${message} - ${tech}`}
     </a>
