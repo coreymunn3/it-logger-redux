@@ -28,3 +28,9 @@ $link-active: $blue;
   font-family: 'Space Mono', monospace;
   font-weight: bold;
 }
+
+.controlPanel {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}

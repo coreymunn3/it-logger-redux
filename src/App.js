@@ -13,6 +13,8 @@ const App = () => {
       <SearchBar />
       <div className='section'>
         <Logs />
+      </div>
+      <div className='section controlPanel'>
         <AddBtn />
       </div>
     </Fragment>
