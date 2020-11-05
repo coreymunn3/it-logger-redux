@@ -6,17 +6,24 @@ const LogItem = ({ log: { id, date, message, attention, tech } }) => {
   let textColor = attention ? 'has-text-danger' : '';
 
   return (
-    <a href='#edit' className={`panel-block ${textColor}`}>
-      <span className='panel-icon'>
-        <i className={`fas fa-clipboard ${textColor}`}></i>
-      </span>
-      <Dayjs className='is-italic' format='MMM DD YYYY'>
-        {date}
-      </Dayjs>
-      <span className='mx-2'>{`${message} (${tech})`}</span>
-      <span className='panel-icon'>
-        <i className='fas fa-trash'></i>
-      </span>
+    <a
+      href='#edit'
+      className={`panel-block ${textColor} is-justify-content-space-between`}
+    >
+      <div className='panel-content'>
+        <span className='panel-icon'>
+          <i className={`fas fa-clipboard ${textColor}`}></i>
+        </span>
+        <Dayjs className='is-italic' format='MMM DD YYYY'>
+          {date}
+        </Dayjs>
+        <span className='mx-2'>{`${message} (${tech})`}</span>
+      </div>
+      <div className='panel-content'>
+        <span className='panel-icon'>
+          <i className='fas fa-trash'></i>
+        </span>
+      </div>
     </a>
   );
 };

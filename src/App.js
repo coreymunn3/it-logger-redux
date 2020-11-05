@@ -4,6 +4,7 @@ import React, { Fragment } from 'react';
 import SearchBar from './components/layout/SearchBar';
 import Logs from './components/logs/Logs';
 import AddBtn from './components/layout/AddBtn';
+import AddLogModal from './components/logs/AddLogModal';
 // import styles
 import './App.scss';
 
@@ -14,9 +15,10 @@ const App = () => {
       <div className='section'>
         <Logs />
       </div>
-      <div className='section controlPanel'>
+      <div className='controlPanel'>
         <AddBtn />
       </div>
+      <AddLogModal />
     </Fragment>
   );
 };
