@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 
-const AddLogModal = () => {
+const AddLogModal = ({ modal, setModal }) => {
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
-  const [tech, settech] = useState('');
-  const [modalActive, setModalActive] = useState(false);
+  const [tech, setTech] = useState('');
+  // const [modalActive, setModalActive] = useState(false);
+
+  const onSubmit = () => {
+    console.log(message, tech, attention);
+  };
 
   return (
-    <div className='modal'>
+    <div className={`modal ${modal ? 'is-active' : ''}`}>
       <div className='modal-background'></div>
       <div className='modal-card section'>
         <header className='modal-card-head'>
@@ -30,19 +34,48 @@ const AddLogModal = () => {
           <div className='field'>
             <div className='control'>
               <div className='select'>
-                <select>
-                  <option>Select Technician</option>
+                <select
+                  name='tech'
+                  value={tech}
+                  onChange={(e) => setTech(e.target.value)}
+                >
+                  <option value='' disabled>
+                    Select Technician
+                  </option>
+                  <option value='John Doe'>John Doe</option>
+                  <option value='Amy Smth'>Amy Smith</option>
                 </select>
               </div>
             </div>
           </div>
+          <div className='field'>
+            <div className='control'>
+              <label className='checkbox'>
+                <input
+                  type='checkbox'
+                  value={attention}
+                  checked={attention}
+                  onChange={(e) => setAttention(!e.target.value)}
+                />
+                {' ' + 'Needs Attention'}
+              </label>
+            </div>
+          </div>
         </section>
+
         <footer className='modal-card-foot'>
-          <button className='button is-success'>Save changes</button>
-          <button className='button'>Cancel</button>
+          <button className='button is-success' onClick={onSubmit}>
+            Save Log
+          </button>
+          <button className='button' onClick={() => setModal(!modal)}>
+            Cancel
+          </button>
         </footer>
       </div>
-      <button className='modal-close is-large'></button>
+      <button
+        className='modal-close is-large'
+        onClick={() => setModal(!modal)}
+      ></button>
     </div>
   );
 };
