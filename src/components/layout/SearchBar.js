@@ -14,7 +14,7 @@ const SearchBar = () => {
           Home
         </a>
         <a className='navbar-item' href='/#'>
-          Documentation
+          About
         </a>
         <div className='field navbar-item'>
           <div className='control is-expanded has-icons-left has-icons-right'>

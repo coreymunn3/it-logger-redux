@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const AddLogModal = ({ addModal, setAddModal }) => {
+const EditLogModal = ({ editModal, setEditModal }) => {
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState('');
@@ -11,7 +11,7 @@ const AddLogModal = ({ addModal, setAddModal }) => {
       console.log('Please enter a message and select a tech');
     } else {
       console.log(message, tech, attention);
-      setAddModal(!addModal);
+      setEditModal(!editModal);
       // clear fields
       setMessage('');
       setAttention(false);
@@ -20,11 +20,11 @@ const AddLogModal = ({ addModal, setAddModal }) => {
   };
 
   return (
-    <div className={`modal ${addModal ? 'is-active' : ''}`}>
+    <div className={`modal ${editModal ? 'is-active' : ''}`}>
       <div className='modal-background'></div>
       <div className='modal-card section'>
         <header className='modal-card-head'>
-          <p className='modal-card-title'>Add Log</p>
+          <p className='modal-card-title'>Edit Log</p>
         </header>
         <section className='modal-card-body'>
           <div className='field'>
@@ -36,6 +36,7 @@ const AddLogModal = ({ addModal, setAddModal }) => {
                 name='message'
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                placeholder='Enter Message'
               ></input>
             </div>
           </div>
@@ -73,19 +74,19 @@ const AddLogModal = ({ addModal, setAddModal }) => {
 
         <footer className='modal-card-foot'>
           <button className='button is-success' onClick={onSubmit}>
-            Create Log
+            Save Log
           </button>
-          <button className='button' onClick={() => setAddModal(!addModal)}>
+          <button className='button' onClick={() => setEditModal(!editModal)}>
             Cancel
           </button>
         </footer>
       </div>
       <button
         className='modal-close is-large'
-        onClick={() => setAddModal(!addModal)}
+        onClick={() => setEditModal(!editModal)}
       ></button>
     </div>
   );
 };
 
-export default AddLogModal;
+export default EditLogModal;

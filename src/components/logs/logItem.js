@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Dayjs from 'react-dayjs';
 
-const LogItem = ({ log: { id, date, message, attention, tech } }) => {
-  let textColor = attention ? 'has-text-danger' : '';
+const LogItem = ({
+  log: { id, date, message, attention, tech },
+  editModal,
+  setEditModal,
+}) => {
+  const [active, setActive] = useState(false);
+  let isActive = active ? 'is-active' : '';
+  let needsAttention = attention ? 'has-text-danger' : '';
 
   return (
     <a
-      href='#edit'
-      className={`panel-block ${textColor} is-justify-content-space-between`}
+      href='/#'
+      className={`panel-block ${needsAttention} ${isActive} is-justify-content-space-between`}
+      onClick={() => setEditModal(!editModal)}
+      onMouseEnter={() => setActive(true)}
+      onMouseLeave={() => setActive(false)}
     >
       <div className='panel-content'>
         <span className='panel-icon'>
-          <i className={`fas fa-clipboard ${textColor}`}></i>
+          <i className={`fas fa-clipboard ${needsAttention}`}></i>
         </span>
         <Dayjs className='is-italic' format='MMM DD YYYY'>
           {date}

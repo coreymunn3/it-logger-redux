@@ -4,7 +4,7 @@ import axios from 'axios';
 import LogItem from './LogItem';
 import Preloader from '../layout/Preloader';
 
-const Logs = () => {
+const Logs = ({ editModal, setEditModal }) => {
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -26,14 +26,13 @@ const Logs = () => {
   return (
     <article className='panel is-primary'>
       <p className='panel-heading'>System Logs</p>
-      <p className='panel-tabs'>
-        <a className='is-active' href='/#'>
-          All
-        </a>
-        <a href='/#'>High Priority</a>
-      </p>
       {logs.map((log) => (
-        <LogItem key={log.id} log={log} />
+        <LogItem
+          key={log.id}
+          log={log}
+          editModal={editModal}
+          setEditModal={setEditModal}
+        />
       ))}
     </article>
   );
