@@ -15,25 +15,18 @@
       "tech": "Sam Smith"
     },
     {
-      "id": 3,
-      "message": "Broken Chair in CEO's office",
+      "message": "Message 3",
       "attention": false,
-      "date": "04-08-2020",
-      "tech": "Sam Smith"
+      "tech": "Amy Smth",
+      "date": "2020-11-11T17:16:41.836Z",
+      "id": 3
     },
     {
-      "id": 4,
-      "message": "Recovered user outlook emails from accidental archive",
-      "attention": false,
-      "date": "05-11-2020",
-      "tech": "John Wilson"
-    },
-    {
-      "message": "CEO computer broken",
+      "message": "Message 4",
       "attention": false,
       "tech": "John Doe",
-      "date": "2020-11-10T14:16:03.940Z",
-      "id": 5
+      "date": "2020-11-11T17:16:48.341Z",
+      "id": 4
     }
   ],
   "techs": [
