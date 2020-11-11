@@ -5,6 +5,9 @@ import {
   LOGS_ERROR,
   ADD_LOG,
   DELETE_LOG,
+  SET_CURRENT,
+  CLEAR_CURRENT,
+  UPDATE_LOG,
 } from './types';
 
 export const getLogs = () => async (dispatch) => {
@@ -24,8 +27,13 @@ export const getLogs = () => async (dispatch) => {
 
 // Add new log
 export const addLog = (log) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
   try {
-    const res = await axios.post('/logs', log);
+    const res = await axios.post('/logs', log, config);
     dispatch({
       type: ADD_LOG,
       payload: res.data,
@@ -52,6 +60,42 @@ export const deleteLog = (id) => async (dispatch) => {
       payload: error.response.data,
     });
   }
+};
+
+// Update a log
+export const updateLog = (log) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const res = await axios.put(`logs/${log.id}`, log, config);
+    dispatch({
+      type: UPDATE_LOG,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: LOGS_ERROR,
+      payload: error.response.data,
+    });
+  }
+};
+
+// Set Current Log
+export const setCurrent = (log) => {
+  return {
+    type: SET_CURRENT,
+    payload: log,
+  };
+};
+
+// Clear Current Log
+export const clearCurrent = () => {
+  return {
+    type: CLEAR_CURRENT,
+  };
 };
 
 // set loading to true

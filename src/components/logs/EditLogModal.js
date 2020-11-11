@@ -1,16 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { updateLog } from '../../actions/logActions';
 
-const EditLogModal = ({ editModal, setEditModal }) => {
+const EditLogModal = ({ editModal, setEditModal, updateLog, current }) => {
+  // local state for form data
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState('');
 
+  // populate form with current log on component load
+  useEffect(() => {
+    if (current) {
+      setMessage(current.message);
+      setAttention(current.attention);
+      setTech(current.tech);
+    }
+  }, [current]);
+
+  // submit the form
   const onSubmit = () => {
     if (message === '' || tech === '') {
       // replace with alert or popup
       console.log('Please enter a message and select a tech');
     } else {
-      console.log(message, tech, attention);
+      // update the log
+      const newLog = {
+        id: current.id,
+        message,
+        attention,
+        tech,
+        date: new Date(),
+      };
+      updateLog(newLog);
+      // close modal
       setEditModal(!editModal);
       // clear fields
       setMessage('');
@@ -89,4 +112,13 @@ const EditLogModal = ({ editModal, setEditModal }) => {
   );
 };
 
-export default EditLogModal;
+EditLogModal.propTypes = {
+  current: PropTypes.object,
+  updateLog: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  current: state.log.current,
+});
+
+export default connect(mapStateToProps, { updateLog })(EditLogModal);

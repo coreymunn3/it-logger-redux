@@ -9,10 +9,10 @@
     },
     {
       "id": 2,
-      "message": "Workstation 7 is broken",
-      "attention": true,
-      "date": "06-21-2020",
-      "tech": "Sam Smith"
+      "message": "Workstation 7 is fixed",
+      "attention": false,
+      "tech": "Sam Smith",
+      "date": "2020-11-11T18:21:38.380Z"
     },
     {
       "message": "Message 3",
@@ -23,10 +23,17 @@
     },
     {
       "message": "Message 4",
+      "attention": true,
+      "tech": "Amy Smth",
+      "date": "2020-11-11T17:49:21.935Z",
+      "id": 4
+    },
+    {
+      "message": "Message 5",
       "attention": false,
       "tech": "John Doe",
-      "date": "2020-11-11T17:16:48.341Z",
-      "id": 4
+      "date": "2020-11-11T17:49:29.164Z",
+      "id": 5
     }
   ],
   "techs": [

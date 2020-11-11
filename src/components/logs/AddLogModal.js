@@ -101,6 +101,8 @@ const AddLogModal = ({ addModal, setAddModal, addLog }) => {
 
 AddLogModal.propTypes = {
   addLog: PropTypes.func.isRequired,
+  addModal: PropTypes.bool.isRequired,
+  setAddModal: PropTypes.func.isRequired,
 };
 
 export default connect(null, { addLog })(AddLogModal);

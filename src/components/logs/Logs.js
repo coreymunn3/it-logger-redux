@@ -33,6 +33,8 @@ const Logs = ({ log: { logs, loading }, getLogs, editModal, setEditModal }) => {
 Logs.propTypes = {
   log: PropTypes.object.isRequired,
   getLogs: PropTypes.func.isRequired,
+  editModal: PropTypes.bool.isRequired,
+  setEditModal: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
