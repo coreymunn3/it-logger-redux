@@ -84,11 +84,11 @@ export const updateLog = (log) => async (dispatch) => {
 };
 
 // Set Current Log
-export const setCurrent = (log) => {
-  return {
+export const setCurrent = (log) => async (dispatch) => {
+  dispatch({
     type: SET_CURRENT,
     payload: log,
-  };
+  });
 };
 
 // Clear Current Log

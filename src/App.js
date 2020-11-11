@@ -3,6 +3,7 @@ import React from 'react';
 // components
 import SearchBar from './components/layout/SearchBar';
 import Dashboard from './components/layout/Dashboard';
+import Alert from './components/layout/Alert';
 // state
 import { Provider } from 'react-redux';
 import store from './store';
@@ -13,6 +14,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <SearchBar />
+      <Alert />
       <Dashboard />
     </Provider>
   );

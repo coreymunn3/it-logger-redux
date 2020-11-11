@@ -9,6 +9,8 @@ import TechListModal from '../techs/TechListModal';
 import AddBtn from './AddBtn';
 
 const Dashboard = () => {
+  // local state for modals toggles their view
+  // passing down setMethods to modals AND components to open/close them
   const [addModal, setAddModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [addTechModal, setAddTechModal] = useState(false);

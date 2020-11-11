@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { updateLog } from '../../actions/logActions';
+import { updateLog, clearCurrent } from '../../actions/logActions';
+import { setAlert } from '../../actions/alertActions';
 
-const EditLogModal = ({ editModal, setEditModal, updateLog, current }) => {
+const EditLogModal = ({
+  editModal,
+  setEditModal,
+  updateLog,
+  current,
+  clearCurrent,
+  setAlert,
+}) => {
   // local state for form data
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
@@ -22,7 +30,11 @@ const EditLogModal = ({ editModal, setEditModal, updateLog, current }) => {
   const onSubmit = () => {
     if (message === '' || tech === '') {
       // replace with alert or popup
-      console.log('Please enter a message and select a tech');
+      // console.log('Please enter a message and select a tech');
+      setAlert({
+        type: 'danger',
+        message: 'Please Enter a Message and Select a Tech',
+      });
     } else {
       // update the log
       const newLog = {
@@ -33,6 +45,8 @@ const EditLogModal = ({ editModal, setEditModal, updateLog, current }) => {
         date: new Date(),
       };
       updateLog(newLog);
+      // clear current
+      clearCurrent();
       // close modal
       setEditModal(!editModal);
       // clear fields
@@ -40,6 +54,13 @@ const EditLogModal = ({ editModal, setEditModal, updateLog, current }) => {
       setAttention(false);
       setTech('');
     }
+  };
+
+  const onExit = () => {
+    // clear current state
+    clearCurrent();
+    // close modal
+    setEditModal(!editModal);
   };
 
   return (
@@ -99,15 +120,12 @@ const EditLogModal = ({ editModal, setEditModal, updateLog, current }) => {
           <button className='button is-success' onClick={onSubmit}>
             Save Log
           </button>
-          <button className='button' onClick={() => setEditModal(!editModal)}>
+          <button className='button' onClick={onExit}>
             Cancel
           </button>
         </footer>
       </div>
-      <button
-        className='modal-close is-large'
-        onClick={() => setEditModal(!editModal)}
-      ></button>
+      <button className='modal-close is-large' onClick={onExit}></button>
     </div>
   );
 };
@@ -115,10 +133,14 @@ const EditLogModal = ({ editModal, setEditModal, updateLog, current }) => {
 EditLogModal.propTypes = {
   current: PropTypes.object,
   updateLog: PropTypes.func.isRequired,
+  clearCurrent: PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   current: state.log.current,
 });
 
-export default connect(mapStateToProps, { updateLog })(EditLogModal);
+export default connect(mapStateToProps, { updateLog, clearCurrent, setAlert })(
+  EditLogModal
+);

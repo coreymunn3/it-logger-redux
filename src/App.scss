@@ -40,3 +40,28 @@ $family-primary: $family-sans-serif;
   display: flex;
   align-items: center;
 }
+
+// alert classes
+.alertFloating {
+  position: fixed;
+  top: 60px;
+  right: 25px;
+  z-index: 99;
+  box-shadow: $panel-shadow;
+}
+
+// for css transition
+.notification-enter {
+  opacity: 0;
+}
+.notification-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+.notification-exit {
+  opacity: 1;
+}
+.notification-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}

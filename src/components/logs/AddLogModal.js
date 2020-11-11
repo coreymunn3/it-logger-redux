@@ -2,8 +2,15 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addLog } from '../../actions/logActions';
+import { removeAlert, setAlert } from '../../actions/alertActions';
 
-const AddLogModal = ({ addModal, setAddModal, addLog }) => {
+const AddLogModal = ({
+  addModal,
+  setAddModal,
+  addLog,
+  setAlert,
+  removeAlert,
+}) => {
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState('');
@@ -11,7 +18,11 @@ const AddLogModal = ({ addModal, setAddModal, addLog }) => {
   const onSubmit = () => {
     if (message === '' || tech === '') {
       // replace with alert or popup
-      console.log('Please enter a message and select a tech');
+      // console.log('Please enter a message and select a tech');
+      setAlert({
+        type: 'danger',
+        message: 'Please Enter a Message and Select a Tech',
+      });
     } else {
       // create log object and pass to redux
       const newLog = {
@@ -100,9 +111,10 @@ const AddLogModal = ({ addModal, setAddModal, addLog }) => {
 };
 
 AddLogModal.propTypes = {
-  addLog: PropTypes.func.isRequired,
   addModal: PropTypes.bool.isRequired,
   setAddModal: PropTypes.func.isRequired,
+  addLog: PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addLog })(AddLogModal);
+export default connect(null, { addLog, setAlert, removeAlert })(AddLogModal);
