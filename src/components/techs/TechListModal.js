@@ -1,23 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getTechs } from '../../actions/techActions';
 import TechItem from './TechItem';
 
-const TechListModal = ({ techListModal, setTechListModal }) => {
-  const [techs, setTechs] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+const TechListModal = ({
+  techListModal,
+  setTechListModal,
+  getTechs,
+  tech: { techs, loading },
+}) => {
   useEffect(() => {
     getTechs();
     // eslint-disable-next-line
   }, []);
-
-  const getTechs = async () => {
-    setLoading(true);
-    // request to backend
-    const res = await axios.get('/techs');
-    setTechs(res.data);
-    setLoading(false);
-  };
 
   return (
     <div className={`modal ${techListModal ? 'is-active' : ''}`}>
@@ -29,9 +25,11 @@ const TechListModal = ({ techListModal, setTechListModal }) => {
         <section className='modal-card-body'>
           <article className='panel is-danger'>
             {!loading &&
+              techs !== null &&
               techs.map((tech) => <TechItem tech={tech} key={tech.id} />)}
           </article>
         </section>
+        <section className='modal-card-foot'></section>
       </div>
       <button
         className='modal-close is-large'
@@ -41,4 +39,14 @@ const TechListModal = ({ techListModal, setTechListModal }) => {
   );
 };
 
-export default TechListModal;
+TechListModal.propTypes = {
+  techListModal: PropTypes.bool.isRequired,
+  setTechListModal: PropTypes.func.isRequired,
+  tech: PropTypes.object.isRequired,
+  getTechs: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  tech: state.tech,
+});
+export default connect(mapStateToProps, { getTechs })(TechListModal);
