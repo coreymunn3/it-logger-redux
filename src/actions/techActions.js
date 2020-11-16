@@ -24,6 +24,45 @@ export const getTechs = () => async (dispatch) => {
   }
 };
 
+// Add tech to server
+export const addTech = (tech) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    setLoading();
+    const res = await axios.post('/techs', tech, config);
+    dispatch({
+      type: ADD_TECH,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: TECHS_ERROR,
+      payload: error.response.statusText,
+    });
+  }
+};
+
+// Delete a tech
+export const deleteTech = (id) => async (dispatch) => {
+  try {
+    setLoading();
+    await axios.delete(`/techs/${id}`);
+    dispatch({
+      type: DELETE_TECH,
+      payload: id,
+    });
+  } catch (error) {
+    dispatch({
+      type: TECHS_ERROR,
+      payload: error.response.statusText,
+    });
+  }
+};
+
 //  Set Loading to True
 export const setLoading = () => {
   return {

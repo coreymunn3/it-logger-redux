@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updateLog, clearCurrent } from '../../actions/logActions';
 import { setAlert } from '../../actions/alertActions';
+import TechSelectOptions from '../techs/TechSelectOptions';
 
 const EditLogModal = ({
   editModal,
@@ -53,6 +54,11 @@ const EditLogModal = ({
       setMessage('');
       setAttention(false);
       setTech('');
+      // user feedback
+      setAlert({
+        type: 'success',
+        message: 'Log Updated',
+      });
     }
   };
 
@@ -95,8 +101,7 @@ const EditLogModal = ({
                   <option value='' disabled>
                     Select Technician
                   </option>
-                  <option value='John Doe'>John Doe</option>
-                  <option value='Amy Smth'>Amy Smith</option>
+                  <TechSelectOptions />
                 </select>
               </div>
             </div>

@@ -1,18 +1,33 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { addTech } from '../../actions/techActions';
+import { setAlert } from '../../actions/alertActions';
 
-const AddTechModal = ({ addTechModal, setAddTechModal }) => {
+const AddTechModal = ({ addTechModal, setAddTechModal, addTech, setAlert }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
   const onSubmit = () => {
     if (firstName === '' || lastName === '') {
-      console.log('Please enter the first and last name');
+      setAlert({
+        type: 'danger',
+        message: 'Please Enter a First and Last name',
+      });
+    } else {
+      // add the tech
+      addTech({ firstName, lastName });
+      // close modal
+      setAddTechModal(!addTechModal);
+      // clear fields
+      setFirstName('');
+      setLastName('');
+      // user feedback
+      setAlert({
+        type: 'success',
+        message: 'Tech Successfully Added',
+      });
     }
-    console.log(firstName, lastName);
-    // close modal
-    // clear fields
-    setFirstName('');
-    setLastName('');
   };
 
   return (
@@ -69,4 +84,10 @@ const AddTechModal = ({ addTechModal, setAddTechModal }) => {
   );
 };
 
-export default AddTechModal;
+AddTechModal.propTypes = {
+  addTech: PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired,
+  addTechModal: PropTypes.bool.isRequired,
+  setAddTechModal: PropTypes.func.isRequired,
+};
+export default connect(null, { addTech, setAlert })(AddTechModal);

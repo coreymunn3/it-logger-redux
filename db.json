@@ -2,60 +2,36 @@
   "logs": [
     {
       "id": 1,
-      "message": "Changed hard drive on work station 044",
+      "message": "Workstation 002 Fixed",
       "attention": false,
-      "tech": "Sam Smith",
-      "date": "2020-11-11T21:30:31.535Z"
+      "tech": "Corey Munn",
+      "date": "2020-11-16T15:23:32.512Z"
     },
     {
-      "id": 2,
-      "message": "Workstation 7 is fixed",
-      "attention": false,
-      "tech": "Sam Smith",
-      "date": "2020-11-11T22:07:36.450Z"
+      "message": "Workstation 005 Needs new hard drive",
+      "attention": true,
+      "tech": "Corey Munn",
+      "date": "2020-11-16T15:21:46.650Z",
+      "id": 2
     },
     {
-      "message": "Message 3",
+      "message": "Monitor at workstation 006 replaced",
       "attention": false,
-      "tech": "Amy Smth",
-      "date": "2020-11-11T17:16:41.836Z",
+      "tech": "Jenny Smith",
+      "date": "2020-11-16T15:22:02.810Z",
       "id": 3
-    },
-    {
-      "message": "Message 4",
-      "attention": true,
-      "tech": "Amy Smth",
-      "date": "2020-11-11T17:49:21.935Z",
-      "id": 4
-    },
-    {
-      "message": "Message 6",
-      "attention": true,
-      "tech": "John Doe",
-      "date": "2020-11-11T23:04:09.477Z",
-      "id": 5
     }
   ],
   "techs": [
     {
-      "id": 1,
-      "firstName": "John",
-      "lastName": "Wilson"
+      "firstName": "Corey",
+      "lastName": "Munn",
+      "id": 1
     },
     {
-      "id": 2,
-      "firstName": "Sam",
-      "lastName": "Smith"
-    },
-    {
-      "id": 3,
-      "firstName": "Jimmy",
-      "lastName": "Webb"
-    },
-    {
-      "id": 4,
-      "firstName": "Bald",
-      "lastName": "Mann"
+      "firstName": "Jenny",
+      "lastName": "Smith",
+      "id": 2
     }
   ]
 }

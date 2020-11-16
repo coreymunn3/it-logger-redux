@@ -2,23 +2,17 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addLog } from '../../actions/logActions';
-import { removeAlert, setAlert } from '../../actions/alertActions';
+import { setAlert } from '../../actions/alertActions';
+import TechSelectOptions from '../techs/TechSelectOptions';
 
-const AddLogModal = ({
-  addModal,
-  setAddModal,
-  addLog,
-  setAlert,
-  removeAlert,
-}) => {
+const AddLogModal = ({ addModal, setAddModal, addLog, setAlert }) => {
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState('');
 
   const onSubmit = () => {
     if (message === '' || tech === '') {
-      // replace with alert or popup
-      // console.log('Please enter a message and select a tech');
+      // alert user
       setAlert({
         type: 'danger',
         message: 'Please Enter a Message and Select a Tech',
@@ -38,6 +32,11 @@ const AddLogModal = ({
       setMessage('');
       setAttention(false);
       setTech('');
+      // user feedback
+      setAlert({
+        type: 'success',
+        message: 'Log Added',
+      });
     }
   };
 
@@ -72,8 +71,7 @@ const AddLogModal = ({
                   <option value='' disabled>
                     Select Technician
                   </option>
-                  <option value='John Doe'>John Doe</option>
-                  <option value='Amy Smth'>Amy Smith</option>
+                  <TechSelectOptions />
                 </select>
               </div>
             </div>
@@ -117,4 +115,4 @@ AddLogModal.propTypes = {
   setAlert: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addLog, setAlert, removeAlert })(AddLogModal);
+export default connect(null, { addLog, setAlert })(AddLogModal);
